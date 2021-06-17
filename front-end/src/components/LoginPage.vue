@@ -31,6 +31,9 @@
     </form>
     <p v-if="errorLogin" class="error">{{errorLogin}}</p>
   </div>
+  <footer>
+      <p><a href="https://github.com/TannerMeeves/stat-tracker">GitHub Repository</a></p>
+  </footer>
 </div>
 </template>
 

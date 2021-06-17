@@ -14,7 +14,7 @@
         </button>
       </div>
       <form class="pure-form" v-if="stat === findStat" @submit="updateStat(stat)">
-        <legend>Update the type of shot, and the amount of makes out of 10</legend>         
+        <legend>Update the type of shot, and the number of makes out of 10</legend>         
         <fieldset>
             <textarea v-model="shottypeupdate"></textarea>
             <textarea v-model="makesupdate"></textarea>
@@ -83,17 +83,14 @@ export default {
     },
     async updateStat(stat) {
       try {
-          console.log("1");
           await axios.put("/api/stats/" + stat._id, {
               shottype: this.shottypeupdate,
               makes: this.makesupdate
           });
-          console.log("2");
           this.shottypeupdate = "";
           this.makesupdate = "";
           this.updating = false;
           this.getStats();
-          console.log("3");
       } catch (error) {
           console.log(error);
       }

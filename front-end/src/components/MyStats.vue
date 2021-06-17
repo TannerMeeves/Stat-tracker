@@ -6,18 +6,16 @@
   <button @click="setCreating" class="pure-button button-xsmall">
     <i class="fas fa-plus" />
   </button>
+  <button @click="setIndividual" class="pure-button button-xsmall">
+    <i class="fas fa-plus" />
+  </button>
+  <button @click="setSummary" class="pure-button button-xsmall">
+    <i class="fas fa-plus" />
+  </button>
 </div>
-<form class="pure-form" v-if="creating" @submit="addStat">
-  <legend>Enter the type of shot, and the amount of makes out of 10</legend>
-  <fieldset>
-    <textarea v-model="shottype"></textarea>
-    <textarea v-model="makes"></textarea>
-    <br />
-    <button @click="cancelCreating" class="pure-button space-right">Cancel</button>
-    <button class="pure-button pure-button-primary" shottype="submit">Submit</button>
-  </fieldset>
-</form>
-<IndividualStats/>
+<CreateStat v-if="creating"/>
+<IndividualStats v-else-if="individual"/>
+<SummaryStats v-else />
 </div>
 
 </template>
@@ -26,20 +24,23 @@
 import axios from 'axios';
 import moment from 'moment';
 import IndividualStats from '@/components/IndividualStats.vue'
+import CreateStat from '@/components/CreateStat.vue'
+import SummaryStats from '@/components/SummaryStats.vue'
 export default {
   name: 'MyStats',
   components: {
       IndividualStats,
+      CreateStat,
+      SummaryStats
   },
   data() {
     return {
       creating: false,
+      individual: false,
+      summary: false,
       shottype: '',
       makes: '',
-      shottypeupdate: '',
-      makesupdate: '',
       stats: [],
-      findStat: '',
     }
   },
   created() {
@@ -73,9 +74,18 @@ export default {
     },
     setCreating() {
       this.creating = true;
+      this.individual = false;
+      this.summary = false;
     },
-    cancelCreating() {
+    setIndividual() {
       this.creating = false;
+      this.individual = true;
+      this.summary = false;
+    },
+    setSummary() {
+      this.creating = false;
+      this.individual = false;
+      this.summary = true;
     },
     async addStat() {
       try {
@@ -90,38 +100,6 @@ export default {
         return true;
       } catch (error) {
         console.log(error);
-      }
-    },
-    async deleteStat(stat) {
-      try {
-        await axios.delete("/api/stats/" + stat._id);
-        this.getStats();
-        return true;
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    setUpdating(stat) {
-      this.findStat = stat;
-    },
-    cancelUpdating() {
-      this.findStat = '';
-    },
-    async updateStat(stat) {
-      try {
-          console.log("1");
-          await axios.put("/api/stats/" + stat._id, {
-              shottype: this.shottypeupdate,
-              makes: this.makesupdate
-          });
-          console.log("2");
-          this.shottypeupdate = "";
-          this.makesupdate = "";
-          this.updating = false;
-          this.getStats();
-          console.log("3");
-      } catch (error) {
-          console.log(error);
       }
     },
   }

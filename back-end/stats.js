@@ -74,7 +74,6 @@ router.delete('/:id', validUser, async (req, res) => {
 
 router.put('/:id', validUser, async (req, res) => {
     try {
-      console.log("4");
       let stat = await Stat.findOne({
           _id: req.params.id
       });
@@ -82,7 +81,6 @@ router.put('/:id', validUser, async (req, res) => {
         res.send(404);
         return;
       }
-      console.log("5");
       stat.makes = req.body.makes;
       stat.shottype = req.body.shottype;
       await stat.save();
