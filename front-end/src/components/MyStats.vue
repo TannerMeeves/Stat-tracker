@@ -2,20 +2,26 @@
 <div class="main">
   <h2>Logged in as: {{user.firstName}} {{user.lastName}} <button @click="logout">Logout</button></h2>
   <h1>My Stats</h1>
-<div>
+<div class="menu">
+  <div class="option">
   <button @click="setCreating" class="pure-button button-xsmall">
-    <i class="fas fa-plus" />
+    Create New Stat
   </button>
+  </div>
+  <div class="option">
   <button @click="setIndividual" class="pure-button button-xsmall">
-    <i class="fas fa-plus" />
+    Individual Stats
   </button>
+  </div>
+  <div class="option">
   <button @click="setSummary" class="pure-button button-xsmall">
-    <i class="fas fa-plus" />
+    Stat Totals
   </button>
+  </div>
 </div>
 <CreateStat v-if="creating"/>
 <IndividualStats v-else-if="individual"/>
-<SummaryStats v-else />
+<SummaryStats v-else-if="summary"/>
 </div>
 
 </template>
@@ -105,3 +111,28 @@ export default {
   }
 }
 </script>
+
+<style>
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.main {
+  background-color: #ffd68f;
+}
+
+.option {
+  width: 30em;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h2 button{
+  font-size: 20px;
+  margin: 1em;
+}
+</style>

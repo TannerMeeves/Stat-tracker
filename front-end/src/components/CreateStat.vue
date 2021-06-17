@@ -1,10 +1,10 @@
 <template>
 <div class="main">
 <form class="pure-form" @submit="addStat">
-  <legend>Enter the type of shot, and the number of makes out of 10</legend>
+  <legend>Enter the type of shot on the left, and the number of makes out of 10 on the right</legend>
   <fieldset>
-    <textarea v-model="shottype"></textarea>
-    <textarea v-model="makes"></textarea>
+    <input v-model="shottype" id="shot-input">
+    <input v-model="makes" id="shot-input">
     <br />
     <button class="pure-button pure-button-primary" shottype="submit">Submit</button>
   </fieldset>
@@ -69,3 +69,13 @@ export default {
   }
 }
 </script>
+
+<style>
+  #shot-input {
+    margin: 1em;
+  }
+  
+  legend {
+    margin: 1em;
+  }
+</style>

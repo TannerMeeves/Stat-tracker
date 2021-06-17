@@ -1,7 +1,8 @@
 <template>
 <div class="main">
-    <button v-if="!calculated" @click="groupStats" class="pure-button button-xsmall">
-        <i class="fas fa-plus" />
+  <hr/>
+    <button v-if="!calculated" @click="groupStats" id="total-button" class="pure-button button-xsmall">
+        Calculate Totals
     </button>
     <div v-for="stat in summedstats" v-bind:key="stat.id">
         <p>{{stat.shottype}} - {{stat.makes}}/{{stat.total}}</p>
@@ -66,3 +67,11 @@ export default {
   }
 }
 </script>
+
+<style>
+  #total-button {
+    background-color: #BAB9BD;
+    color: blue;
+    margin: 1em;
+  }
+</style>

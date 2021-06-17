@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header id="header">
-      <h1>Stats Tracker</h1>
+      <h1>Basketball Stats Tracker</h1>
     </header>
     <router-view />
   </div>
@@ -14,6 +14,8 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: #ffd68f;
+  height: 47em;
 }
 
 #nav {
@@ -27,5 +29,9 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+header {
+  background-color: white;
 }
 </style>

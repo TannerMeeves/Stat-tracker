@@ -1,26 +1,31 @@
 <template>
 <div class="main">
 <div v-for="stat in stats" v-bind:key="stat.id">
+  <hr/>
   <div class="stat">
     <div class="shottype">
       <h3>Shots taken on {{time(stat.created)}}</h3>
       <p>{{stat.shottype}} - {{stat.makes}}/10</p>
+      <div class="edit-zone">
+      <div class="inner-zone">
       <button @click="deleteStat(stat)" class="pure-button button-xsmall">
-        <i class="fas fa-plus" />
+        Delete
       </button>
-      <div>
+      </div>
+      <div class="inner-zone">
         <button @click="setUpdating(stat)" class="pure-button button-xsmall">
-            <i class="fas fa-plus" />
+            Edit
         </button>
       </div>
+      </div>
       <form class="pure-form" v-if="stat === findStat" @submit="updateStat(stat)">
-        <legend>Update the type of shot, and the number of makes out of 10</legend>         
+        <legend>Update the type of shot on the left, and the number of makes out of 10 on the right</legend>         
         <fieldset>
-            <textarea v-model="shottypeupdate"></textarea>
-            <textarea v-model="makesupdate"></textarea>
+            <input v-model="shottypeupdate" id="shot-input">
+            <input v-model="makesupdate" id="shot-input">
             <br />
-            <button @click="cancelUpdating" class="pure-button space-right">Cancel</button>
-            <button class="pure-button pure-button-primary" shottype="submit">Submit</button>
+            <button @click="cancelUpdating" id="shot-input" class="pure-button space-right">Cancel</button>
+            <button id="shot-input" class="pure-button pure-button-primary" shottype="submit">Submit</button>
         </fieldset>
       </form>
     </div>
@@ -98,3 +103,14 @@ export default {
   }
 }
 </script>
+
+<style>
+  .edit-zone {
+    display: flex;
+    justify-content: center;
+  }
+
+  .inner-zone {
+    width: 8em;
+  }
+</style>
