@@ -7,7 +7,7 @@
     <i class="fas fa-plus" />
   </button>
 </div>
-<form class="pure-form" v-if="creating" @submit.prevent="addStat">
+<form class="pure-form" v-if="creating" @submit="addStat">
   <legend>Enter the type of shot, and the amount of makes out of 10</legend>
   <fieldset>
     <textarea v-model="shottype"></textarea>
@@ -17,32 +17,7 @@
     <button class="pure-button pure-button-primary" shottype="submit">Submit</button>
   </fieldset>
 </form>
-<div v-for="stat in stats" v-bind:key="stat.id">
-  <div class="stat">
-    <div class="shottype">
-      <h3>Shots taken on {{time(stat.created)}}</h3>
-      <p>{{stat.shottype}} - {{stat.makes}}/10</p>
-      <button @click="deleteStat(stat)" class="pure-button button-xsmall">
-        <i class="fas fa-plus" />
-      </button>
-      <div>
-        <button @click="setUpdating(stat)" class="pure-button button-xsmall">
-            <i class="fas fa-plus" />
-        </button>
-      </div>
-        <form class="pure-form" v-if="stat === findStat" @submit="updateStat(stat)">
-          <legend>Update the type of shot, and the amount of makes out of 10</legend>         
-          <fieldset>
-              <textarea v-model="shottypeupdate"></textarea>
-              <textarea v-model="makesupdate"></textarea>
-              <br />
-              <button @click="cancelUpdating" class="pure-button space-right">Cancel</button>
-              <button class="pure-button pure-button-primary" shottype="submit">Submit</button>
-          </fieldset>
-        </form>
-      </div>
-  </div>
-</div>
+<IndividualStats/>
 </div>
 
 </template>
@@ -50,8 +25,12 @@
 <script>
 import axios from 'axios';
 import moment from 'moment';
+import IndividualStats from '@/components/IndividualStats.vue'
 export default {
   name: 'MyStats',
+  components: {
+      IndividualStats,
+  },
   data() {
     return {
       creating: false,

@@ -34,7 +34,7 @@
 import axios from 'axios';
 import moment from 'moment';
 export default {
-  name: 'MyStats',
+  name: 'IndividualStats',
   data() {
     return {
       shottype: '',
@@ -65,27 +65,6 @@ export default {
     },
     time(d) {
       return moment(d).format('D MMMM YYYY, h:mm:ss a');
-    },
-    setCreating() {
-      this.creating = true;
-    },
-    cancelCreating() {
-      this.creating = false;
-    },
-    async addStat() {
-      try {
-        await axios.post("/api/stats", {
-          shottype: this.shottype,
-          makes: this.makes
-        });
-        this.shottype = "";
-        this.makes = "";
-        this.creating = false;
-        this.getStats();
-        return true;
-      } catch (error) {
-        console.log(error);
-      }
     },
     async deleteStat(stat) {
       try {
