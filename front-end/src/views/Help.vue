@@ -7,12 +7,13 @@
     your shooting numbers both individually, and as summed up percentages. Upon logging in, click the
     Create New Stat button, and enter in a shot type, and the number of makes out of 10. For conveniency, 
     always shoot each shot in groups of ten so that you can easily record them here. Then if you click
-    on IndividualStats, you will be able to see each entry and when you inputted it. If you click on Edit
+    on Individual Stats, you will be able to see each entry and when you inputted it. If you click on Edit
     or Delete, it will allow you to manipulate whatever data entry you messed up. Then if you click on 
     Stat Totals, and click Calculate Totals, it will show your totals as well as your percentages for each
-    shot! Them you can analyze and see what areas you need to improve on. Be careful to type the words in
-    correctly as if you misspell a word, it will count it as a different category in your summed totals. 
-    We hope you enjoy this website and that it helps you in your skill enhancement!</p> 
+    shot! Then you can analyze and see what areas you need to improve on. Be careful to type the words in
+    correctly because if you misspell a word, it will count it as a different category in your summed totals. 
+    Shot types are not case sensitive though, so it will recognize it if your capitalization varies. We hope 
+    you enjoy this website and that it helps you in your skill enhancement!</p> 
     </div>
     <router-link to="/"><h5>Return</h5></router-link>
   </div>
