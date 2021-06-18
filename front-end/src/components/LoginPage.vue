@@ -35,7 +35,7 @@
   </div>
 </div>
 <footer>
-      <p><a href="https://github.com/TannerMeeves/stat-tracker">GitHub Repository</a></p>
+      <p><a href="https://github.com/TannerMeeves/stat-tracker">GitHub Repository</a> --- 14 hours spent</p>
 </footer>
 </div>
 </template>
