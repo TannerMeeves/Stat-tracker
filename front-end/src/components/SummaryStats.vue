@@ -5,7 +5,7 @@
         Calculate Totals
     </button>
     <div v-for="stat in summedstats" v-bind:key="stat.id">
-        <p>{{stat.shottype}} - {{stat.makes}}/{{stat.total}}</p>
+        <p>{{stat.shottype}} - {{stat.makes}}/{{stat.total}}  -  {{stat.makes*100/stat.total}}%</p>
     </div>
 </div>
 </template>
@@ -56,7 +56,6 @@ export default {
                 }
             }
             if (!found){
-                console.log(i);
                 let newStat = {shottype: this.stats[i].shottype, makes: parseInt(this.stats[i].makes, 10), total: 10};
                 this.summedstats.push(newStat);
             }

@@ -2,6 +2,7 @@
   <div id="app">
     <header id="header">
       <h1>Basketball Stats Tracker</h1>
+      <router-link to="/help"><h4>Help</h4></router-link>
     </header>
     <router-view />
   </div>
@@ -33,5 +34,16 @@
 
 header {
   background-color: white;
+}
+
+h4 {
+  position: absolute;
+  float: right;
+  right: 60px;
+  top: 10px;
+}
+
+#header h1 {
+  padding: 0em 0em .75em 0em;
 }
 </style>
